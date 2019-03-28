@@ -6,7 +6,8 @@
   "scripts": {
     "build:dev": "cross-env MODE=development webpack --config conf/webpack.config.js",
     "build:prod": "cross-env MODE=production webpack --config conf/webpack.config.js",
-    "dev": "cross-env MODE=development webpack-dev-server --config conf/webpack.config.js"
+    "serve:dev": "cross-env MODE=development webpack-dev-server --config conf/webpack.config.js",
+    "serve:prod": "cross-env MODE=production webpack-dev-server --config conf/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.4",
+    "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
