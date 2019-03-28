@@ -2,7 +2,7 @@
   "name": "mxappswitcher",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/mxappswitcher.js",
   "scripts": {
     "build:dev": "cross-env MODE=development webpack --config conf/webpack.config.js",
     "build:prod": "cross-env MODE=production webpack --config conf/webpack.config.js",
