@@ -1,0 +1,7 @@
+conf/
+node_modules/
+src/
+.prettierrc
+.stylelintrc.json
+.gitignore
+*.lock
