@@ -34,3 +34,31 @@
   border: none;
   height: 400px;
 }
+.app-switcher__effect--hide {
+  display: none;
+}
+@keyframes fadeIn {
+  from {
+    display: block;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.app-switcher__effect--fadeIn {
+  animation: fadeIn 0.2s forwards;
+}
+.app-switcher__effect--fadeOut {
+  animation: fadeOut 0.2s forwards;
+}
