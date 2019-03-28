@@ -22,7 +22,7 @@
       zIndex: '1001', //don't overlay mx popups & modals
       customStyle: '',
       hasCreateAppButton: true
-    });
+    }).init().element;
     wrapper.appendChild(onlyFrame);
   });
 })();
