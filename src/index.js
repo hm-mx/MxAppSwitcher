@@ -81,21 +81,20 @@ export function MxAppSwitcher(options) {
   function _setEvent() {
     // register event listeners in this object for later removal on destroy
     listenersHandlers = {};
-    const fadeOptions = { duration: 300 };
 
     listenersHandlers.toggleHandler = event => {
       event.stopPropagation();
       if (!state.isOpen) {
-        _show(fadeOptions);
+        _show();
       } else {
-        _hide(fadeOptions);
+        _hide();
       }
       state.isOpen = !state.isOpen;
     };
 
     listenersHandlers.documentOnClickHandler = () => {
       if (state.isOpen) {
-        _hide(fadeOptions);
+        _hide();
         state.isOpen = !state.isOpen;
       }
     };
@@ -123,13 +122,13 @@ export function MxAppSwitcher(options) {
     document.addEventListener('click', listenersHandlers.documentOnClickHandler);
   }
 
-  function _show(fadeOptions) {
+  function _show() {
     appSwitcherWrapperDiv.classList.remove('app-switcher__effect--hide');
     appSwitcherWrapperDiv.classList.remove('app-switcher__effect--fadeOut');
     appSwitcherWrapperDiv.classList.add('app-switcher__effect--fadeIn');
   }
 
-  function _hide(fadeOptions) {
+  function _hide() {
     appSwitcherWrapperDiv.classList.remove('app-switcher__effect--fadeIn');
     appSwitcherWrapperDiv.classList.add('app-switcher__effect--fadeOut');
   }
