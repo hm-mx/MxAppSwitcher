@@ -27,9 +27,10 @@ export function MxAppSwitcher(options) {
     return state;
   }
   function destroy() {
-    if (listenersHandlers) {
+    if (popperInstance && listenersHandlers) {
       options.refNode.removeEventListener('click', listenersHandlers.toggleHandler);
       document.removeEventListener('click', listenersHandlers.documentOnClickHandler);
+      window.removeEventListener('message', listenersHandlers.windowMessageHandler);
       popperInstance.destroy();
     }
   }
@@ -98,6 +99,25 @@ export function MxAppSwitcher(options) {
         state.isOpen = !state.isOpen;
       }
     };
+    listenersHandlers.windowMessageHandler = function(messageEvent) {
+      var origin = messageEvent.origin;
+      //  make sure that the message is coming fromn a trusted origin
+      if (
+        origin === 'https://appswitcherservice-accp.mendixcloud.com' ||
+        origin === 'https://appswitcherservice-test.mendixcloud.com' ||
+        origin === 'https://appswitcherservice.mendixcloud.com'
+      ) {
+        if (
+          messageEvent.data &&
+          messageEvent.data.communicationCode === 'kY28$Y' &&
+          messageEvent.data.action === 'CREATE_NEW_APP'
+        ) {
+          window.open('https://sprintr.home.mendix.com/link/startnewproject', '_blank');
+        }
+      }
+    };
+
+    window.addEventListener('message', listenersHandlers.windowMessageHandler);
 
     options.refNode.addEventListener('click', listenersHandlers.toggleHandler);
     document.addEventListener('click', listenersHandlers.documentOnClickHandler);
@@ -120,8 +140,9 @@ export function MxAppSwitcher(options) {
     if (typeof options.hasCreateAppButton === 'boolean')
       url = url + '&hasCreateAppButton=' + options.hasCreateAppButton.toString();
     if (options.customStyle) {
-      url = url + '&customStyle=' + options.customStyle.replace(/\s*/g, '');
-      url = url + '&customStyle=' + options.customStyle.replace(/#/g, '$');
+      var formatedStyle = options.customStyle.replace(/\s*/g, ''); //remove white spaces.
+      formatedStyle = formatedStyle.replace(/#/g, '$'); // replace hash tag symbol with $
+      url = url + '&customStyle=' + formatedStyle;
     }
     return url;
   }
