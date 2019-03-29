@@ -1,26 +1,26 @@
-## Mendix App Switcher
+# Mendix App Switcher
 
-### Install
+## Install
 
 ```sh
-//using yarn
+// using yarn
 $ yarn add mxappswitcher
 
-//using npm
+// using npm
 $ npm install --save mxappswitcher
 
 ```
 
-### Usage
+## Usage
 
 ```js
 import MxAppSwitcher from "mxappswitcher";
 
-//1. with toggle element
+// 1. with toggle element
 MxAppSwitcher({
       toggleElement: SOME_TOGGLE_BUTTON,
       serviceURL: 'https://appswitcherservice-accp.mendixcloud.com/',
-      idToken:SOME_ID_TOKEN,
+      idToken: SOME_ID_TOKEN,
       zIndex: '1001', //don't overlay mx popups & modals
       customStyle: '*{color: purple;}',
       hasCreateAppButton: true,
@@ -28,12 +28,11 @@ MxAppSwitcher({
 }).init();
 
 
-//2. get the element and append it your dom
+// 2. get the element and append it your dom
 
 const myAppSwicher = MxAppSwitcher({
-      toggleElement: SOME_TOGGLE_BUTTON,
       serviceURL: 'https://appswitcherservice-accp.mendixcloud.com/',
-      idToken:SOME_ID_TOKEN,
+      idToken: SOME_ID_TOKEN,
       zIndex: '1001', //don't overlay mx popups & modals
       customStyle: '*{color: purple;}',
       hasCreateAppButton: true,
