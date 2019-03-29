@@ -24,6 +24,7 @@ MxAppSwitcher({
       zIndex: '1001', //don't overlay mx popups & modals
       customStyle: '*{color: purple;}',
       hasCreateAppButton: true,
+      popupPlacement: 'left-end', // optional, default: 'auto-end'
       onCreate: () => console.log('created!');
 }).init();
 
@@ -36,6 +37,7 @@ const myAppSwicher = MxAppSwitcher({
       zIndex: '1001', //don't overlay mx popups & modals
       customStyle: '*{color: purple;}',
       hasCreateAppButton: true,
+      popupPlacement: 'left-end', // optional, default: 'auto-end'
       onCreate: () => console.log('created!');
 }).init().element;
 

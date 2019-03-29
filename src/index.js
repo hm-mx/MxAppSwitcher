@@ -48,7 +48,7 @@ export function MxAppSwitcher(options) {
     if (_isPopOver) {
       document.body.appendChild(appSwitcherWrapperDiv);
       popperInstance = new Popper(options.toggleElement, appSwitcherWrapperDiv, {
-        placement: 'auto-end',
+        placement: options.popupPlacement || 'auto-end',
         positionFixed: false,
         eventsEnabled: true,
         modifiers: {
